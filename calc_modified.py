@@ -29,14 +29,12 @@ class calc():
         scdnum = str(num)
         if self.current == "0":
             if self.dontdeletezero == False:
-                print("00")
                 self.current = scdnum
                 if self.total != 0:
                     self.display(str(self.total) + self.current)
                 else:
                     self.display(self.current)
             else:
-                print("01")
                 self.current += scdnum
                 self.display(str(self.total) + self.current)
                 self.dontdeletezero = False
@@ -100,11 +98,10 @@ class calc():
 
     def dt(self):
         self.result = False
-        self.total = str(textDisplay.get()) + "."
+        self.current += "."
         self.input_value = False
-        self.current = ""
         self.dontdeletezero = True
-        self.display(self.total)
+        self.display(str(self.total) + self.current)
 
     def zr(self):
         self.result = False
@@ -138,7 +135,7 @@ class calc():
             self.current  = eval(self.total)
         except:
             self.current = "ERROR"
-        self.display(round(self.current,6))
+        self.display(round(self.current,5))
         self.current = ""
         self.input_value = True
         self.arithmatic_operator == ""
