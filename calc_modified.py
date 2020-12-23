@@ -39,13 +39,11 @@ class calc():
                 self.display(str(self.total) + self.current)
                 self.dontdeletezero = False
         elif self.total == 0:
-            print("1")
             textDisplay.delete(0)
             self.current += scdnum
             self.input_value = False
             self.display(self.current)
         else:
-            print("2")
             self.current += scdnum
             self.display(str(self.total) + self.current)
 
