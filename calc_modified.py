@@ -138,7 +138,7 @@ class calc():
             self.current  = eval(self.total)
         except:
             self.current = "ERROR"
-        self.display(self.current)
+        self.display(round(self.current,6))
         self.current = ""
         self.input_value = True
         self.arithmatic_operator == ""
