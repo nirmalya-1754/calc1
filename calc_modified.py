@@ -99,7 +99,10 @@ class calc():
         self.current += "."
         self.input_value = False
         self.dontdeletezero = True
-        self.display(str(self.total) + self.current)
+        if self.total == 0:
+            self.display(self.current)
+        else:
+            self.display(str(self.total) + self.current)
 
     def zr(self):
         self.result = False
@@ -146,45 +149,46 @@ rt.resizable(width = False, height  = False)
 calc = Frame(rt)
 calc.grid()
 
-textDisplay = Entry(calc, bg = "powderblue", fg = "black", font = ("arial" ,21, "bold"),justify = RIGHT, bd = 15, width = 23)
+textDisplay = Entry(calc, bg = "#182d4d", fg = "powder blue", font = ("arial" ,21, "bold"),justify = LEFT, bd = 15, width = 23)
 textDisplay.grid(row = 0, column = 0, columnspan = 4, pady = 1)
 textDisplay.insert(0,"0")
 
-btnC = (Button(calc, height=2, width=5, text="C" , font=("arial", 20, "bold"), bd=4,command = added_value.clear_entry))
+
+btnC = (Button(calc, height=2, width=5, text="C" , font=("arial", 20, "bold"), bd=4,command = added_value.clear_entry,fg = "powder blue",bg = "#0c3a77"))
 btnC.grid(row = 1, column = 0 , pady = 1)
-btnCE = (Button(calc, height=2, width=5, text="CE" , font=("arial", 20, "bold"), bd=4, command = added_value.clear_all_entry))
+btnCE = (Button(calc, height=2, width=5, text="CE" , font=("arial", 20, "bold"), bd=4, command = added_value.clear_all_entry,fg = "powder blue",bg = "#0c3a77"))
 btnCE.grid(row = 1, column = 1 , pady = 1)
-btnsqrt = (Button(calc, height=2, width=5, text="√" , font=("arial", 20, "bold"), bd=4, command = added_value.sqrt))
+btnsqrt = (Button(calc, height=2, width=5, text="√" , font=("arial", 20, "bold"), bd=4, command = added_value.sqrt,fg = "powder blue",bg = "#0c3a77"))
 btnsqrt.grid(row = 1, column =2 , pady = 1)
 
-btndiv = (Button(calc, height=2, width=5, text="/" , font=("arial", 20, "bold"), bd=4))
+btndiv = (Button(calc, height=2, width=5, text="/" , font=("arial", 20, "bold"), bd=4,fg = "powder blue",bg = "#0c3a77"))
 btndiv.grid(row = 1, column = 3 , pady = 1)
 btndiv["command"] = lambda x = "/":added_value.art_op(x)
-btnmul = (Button(calc, height=2, width=5, text="*" , font=("arial", 20, "bold"), bd=4))
+btnmul = (Button(calc, height=2, width=5, text="*" , font=("arial", 20, "bold"), bd=4,fg = "powder blue",bg = "#0c3a77"))
 btnmul.grid(row = 2, column = 3 , pady = 1)
 btnmul["command"] = lambda x = "*":added_value.art_op(x)
-btnadd = (Button(calc, height=2, width=5, text="+" , font=("arial", 20, "bold"), bd=4))
+btnadd = (Button(calc, height=2, width=5, text="+" , font=("arial", 20, "bold"), bd=4,fg = "powder blue",bg = "#0c3a77"))
 btnadd.grid(row = 3, column = 3 , pady = 1)
 btnadd["command"] = lambda x = "+":added_value.art_op(x)
-btnsub = (Button(calc, height=2, width=5, text="-" , font=("arial", 20, "bold"), bd=4))
+btnsub = (Button(calc, height=2, width=5, text="-" , font=("arial", 20, "bold"), bd=4,fg = "powder blue",bg = "#0c3a77"))
 btnsub.grid(row = 4, column = 3 , pady = 1)
 btnsub["command"] = lambda x = "-":added_value.art_op(x)
 
-btnzr = (Button(calc, height=2, width=5, text="0" , font=("arial", 20, "bold"), bd=4))
-btnzr.grid(row = 5, column = 0 , pady = 1)
+btnzr = (Button(calc, height=2, width=5, text="0" , font=("arial", 20, "bold"), bd=4,fg = "sky blue",bg = "#182d4d"))
+btnzr.grid(row = 5, column = 1 , pady = 1)
 btnzr["command"] = lambda x = "0":added_value.nument(x)
-btndt = (Button(calc, height=2, width=5, text="." , font=("arial", 20, "bold"), bd=4, command = added_value.dt))
-btndt.grid(row = 5, column = 1 , pady = 1)
-btnas = (Button(calc, height=2, width=5, text="±" , font=("arial", 20, "bold"), bd=4, command = added_value.pm))
-btnas.grid(row = 5, column = 2 , pady = 1)
-btneq = (Button(calc, height=2, width=5, text="=" , font=("arial", 20, "bold"), bd=4, command = added_value.eql))
+btndt = (Button(calc, height=2, width=5, text="." , font=("arial", 20, "bold"), bd=4, command = added_value.dt,fg = "powder blue",bg = "#0c3a77"))
+btndt.grid(row = 5, column = 2 , pady = 1)
+btnas = (Button(calc, height=2, width=5, text="±" , font=("arial", 20, "bold"), bd=4, command = added_value.pm,fg = "powder blue",bg = "#0c3a77"))
+btnas.grid(row = 5, column = 0 , pady = 1)
+btneq = (Button(calc, height=2, width=5, text="=" , font=("arial", 20, "bold"), bd=4, command = added_value.eql,fg = "white",bg = "#f40e23"))
 btneq.grid(row = 5, column = 3 , pady = 1)
 
 numpad = [7,8,9,4,5,6,1,2,3,]
 q = 0
 for i in range(2,5):
     for j in range(3):
-        btn = (Button(calc,height = 2, width = 5,text = str(numpad[q]), font = ("arial" ,20, "bold") ,bd = 4,bg = "powder blue"))
+        btn = (Button(calc,height = 2, width = 5,text = str(numpad[q]), font = ("arial" ,20, "bold") ,bd = 4,fg = "sky blue",bg = "#182d4d"))
         btn.grid(row = i, column = j , pady = 1)
         btn["command"] = lambda x = numpad[q]:added_value.nument(x)
         q += 1
