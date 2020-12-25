@@ -11,6 +11,7 @@ class calc():
         self.dontdeletezero = False
         self.input_value = True
         self.current = "0"
+        self.ans = "0"
 
     def display(self,value):
         textDisplay.delete(0,END)
@@ -22,6 +23,13 @@ class calc():
         self.dontdeletezero = False
         self.current = ""
         self.display(str(self.total) + self.current)
+
+    def ansr(self):
+        self.current = self.ans
+        if self.total == 0:
+            self.display(self.ans)
+        elif self.total != 0:
+            self.display(str(self.total) + self.ans)
 
 
     def nument(self,num):
@@ -100,6 +108,7 @@ class calc():
         self.input_value = False
         self.dontdeletezero = True
         if self.total == 0:
+            self.current = "0."
             self.display(self.current)
         else:
             self.display(str(self.total) + self.current)
@@ -141,15 +150,22 @@ class calc():
         self.input_value = True
         self.arithmatic_operator == ""
         self.total = 0
+        self.ans = textDisplay.get()
 
 added_value = calc()
 rt = Tk()
 rt.title("Calculator")
 rt.resizable(width = False, height  = False)
+calc1 = Frame(rt)
+calc1.grid()
 calc = Frame(rt)
 calc.grid()
+calc2 = Frame(rt)
+calc2.grid(column=0, row=2,pady = 1, sticky="nsew", columnspan=1)
 
-textDisplay = Entry(calc, bg = "#182d4d", fg = "powder blue", font = ("arial" ,21, "bold"),justify = LEFT, bd = 15, width = 23)
+
+
+textDisplay = Entry(calc1, bg = "#182d4d", fg = "powder blue", font = ("arial" ,21, "bold"),justify = LEFT, bd = 15, width = 23)
 textDisplay.grid(row = 0, column = 0, columnspan = 4, pady = 1)
 textDisplay.insert(0,"0")
 
@@ -183,6 +199,9 @@ btnas = (Button(calc, height=2, width=5, text="±" , font=("arial", 20, "bold"),
 btnas.grid(row = 5, column = 0 , pady = 1)
 btneq = (Button(calc, height=2, width=5, text="=" , font=("arial", 20, "bold"), bd=4, command = added_value.eql,fg = "white",bg = "#f40e23"))
 btneq.grid(row = 5, column = 3 , pady = 1)
+
+btnans = (Button(calc2, height=2, text="Ans" , font=("arial", 21, "bold"), bd=4, command = added_value.ansr,fg = "powder blue",bg = "#0c3a77"))
+btnans.pack(expand = True, fill = "x")
 
 numpad = [7,8,9,4,5,6,1,2,3,]
 q = 0
