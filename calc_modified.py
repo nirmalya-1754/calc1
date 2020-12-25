@@ -143,9 +143,10 @@ class calc():
         self.dontdeletezero = False
         try:
             self.current  = eval(self.total)
+            self.display(round(self.current, 5))
         except:
             self.current = "ERROR"
-        self.display(round(self.current,5))
+            self.display(self.current)
         self.current = ""
         self.input_value = True
         self.arithmatic_operator == ""
@@ -161,7 +162,7 @@ calc1.grid()
 calc = Frame(rt)
 calc.grid()
 calc2 = Frame(rt)
-calc2.grid(column=0, row=2,pady = 1, sticky="nsew", columnspan=1)
+calc2.grid(column=0, row=2,padx = 1, sticky="nsew", columnspan=1)
 
 
 
